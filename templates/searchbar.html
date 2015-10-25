@@ -2,9 +2,9 @@
 <div id="searchbar">
   <form action="/search" method="get">
       <span> "Who's Hiring?" posts containing </span>
-      <input id="keywords" type="text" name="keywords" placeholder="(python | 'embedded systems') & London" value="{{.Keywords}}">
+      <input id="keywords" type="text" name="keywords" required="true" placeholder="(python | 'embedded systems') & London" value="{{.Keywords}}">
       <span> posted within </span>
-      <input id="months" type="text" name="months" placeholder="2" maxlength="1" size="1" value="{{.Months}}"> 
+      <input id="months" type="number" name="months" required="true" placeholder="1" max="3" min="1" value="{{.Months}}"> 
       <span> month(s) </span>
       <input type="submit" value="SEARCH"> 
   </form>
