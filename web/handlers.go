@@ -6,8 +6,7 @@ import (
 	"strconv"
 	"text/template"
 
-	"github.com/Sirupsen/logrus"
-
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/Sirupsen/logrus"
 	"github.com/evgorchakov/hnwh/database"
 	"github.com/evgorchakov/hnwh/models"
 )

@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/evgorchakov/hnwh/utils",
+	"GoVersion": "go1.5.1",
+	"Deps": []
+}

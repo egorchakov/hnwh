@@ -1,0 +1,21 @@
+{
+	"ImportPath": "github.com/evgorchakov/hnwh/web",
+	"GoVersion": "go1.5.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.8.7-30-g4643a7e",
+			"Rev": "4643a7efec9b8fd7548882e7b30095711343100f"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx",
+			"Comment": "sqlx-v1.1-12-gb507f47",
+			"Rev": "b507f47f230c5a3aff4a6c48f810132433b71510"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-33-g2dc5e4a",
+			"Rev": "2dc5e4aefbb6d49c0e5629455fdc9e5848a8fc5b"
+		}
+	]
+}

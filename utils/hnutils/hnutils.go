@@ -6,7 +6,7 @@ import (
 	"sort"
 	"time"
 
-	hn "github.com/caser/gophernews"
+	hn "github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/caser/gophernews"
 )
 
 const (

@@ -5,11 +5,11 @@ import (
 	"log"
 	"time"
 
-	"github.com/caser/gophernews"
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/caser/gophernews"
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/gopkg.in/alecthomas/kingpin.v2"
 	"github.com/evgorchakov/hnwh/database"
 	"github.com/evgorchakov/hnwh/models"
 	"github.com/evgorchakov/hnwh/utils/hnutils"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 const (

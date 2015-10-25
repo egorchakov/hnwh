@@ -1,8 +1,7 @@
 package database
 
 import (
-	"github.com/jmoiron/sqlx"
-
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/jmoiron/sqlx"
 	"github.com/evgorchakov/hnwh/models"
 )
 

@@ -1,0 +1,10 @@
+{
+	"ImportPath": "github.com/evgorchakov/hnwh/utils/hnutils",
+	"GoVersion": "go1.5.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/caser/gophernews",
+			"Rev": "f17255d5b79267d21a335ce3aee4f3dbd6117858"
+		}
+	]
+}

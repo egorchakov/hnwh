@@ -3,10 +3,10 @@ package main
 import (
 	"net/http"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/Sirupsen/logrus"
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/gorilla/mux"
 	"github.com/evgorchakov/hnwh/database"
 	"github.com/evgorchakov/hnwh/web"
-	"github.com/gorilla/mux"
 )
 
 var log = logrus.New()
