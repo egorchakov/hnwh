@@ -1,0 +1,73 @@
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12pt;
+  color: #d0d0d0;
+  background-color: #151515;
+}
+
+.main{
+  margin: auto;
+  width: 75%;
+  padding: 10px;
+}
+
+div.comment-container {
+  background-color: #202020;
+  padding: 15px;
+  margin: 30px 0;
+  border-radius: 2px;
+}
+
+div.comment-header a {
+  text-decoration: none;
+  color: #909090;
+}
+div.comment-text a {
+  color: #cccccc;
+}
+
+div#searchbar {
+  width: 100%
+}
+
+#searchbar form {
+  width: 100%
+}
+
+#searchbar input {
+  display: inline-block;
+  font-size: 14pt;
+  padding: 10px 15px;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+#searchbar input[type="text"] {
+  background-color: #404040;
+}
+
+#searchbar input[type="submit"] {
+  background-color: #388E3C;
+  float: right;
+}
+
+#searchbar input[id="keywords"]{
+  width: 350px;
+}
+
+#searchbar input[id="months"]{
+  width: 30px;
+}
+
+#searchbar{
+  display: inline-block;
+  font-size: 14pt;
+}
+
+#searchbar div {
+  display: inline-block;
+  margin: 0 auto;
+}
+

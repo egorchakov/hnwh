@@ -29,3 +29,10 @@ func StrFilter(s []string, fn func(string) bool) []string {
 func StrNotEmpty(s string) bool {
 	return s != ""
 }
+
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

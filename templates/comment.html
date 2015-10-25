@@ -1,0 +1,11 @@
+{{ define "comment" }}
+<div class="comment-container">
+  <div class="comment-header">
+    <a href="https://news.ycombinator.com/item?id={{.Id}}">{{.By}} | {{.Time.Format "Jan 2"}}</a>
+  </div>
+  <br>
+  <div class="comment-text"> 
+    <span>{{.Text}}</span>
+  </div>
+</div>
+{{ end }}

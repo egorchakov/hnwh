@@ -1,0 +1,23 @@
+{{define "comments"}}
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" href="/static/main.css">
+  </head>
+  <body>
+    <div class="main">
+
+      {{ template "searchbar" .SearchBarData }}
+
+      <p>Found {{len .Comments}} comments</p>
+
+      <div class="comments">
+        {{ range $comment := .Comments }}
+          {{ template "comment" $comment }}
+        {{ end }}
+      </div>
+
+    </div>
+  </body>
+</html>
+{{end}}
