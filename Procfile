@@ -1,1 +1,1 @@
-web: go run hwnh.go
+web: hnwh 

@@ -2,11 +2,12 @@ package main
 
 import (
 	"net/http"
+	"os"
 
-	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/Sirupsen/logrus"
-	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/gorilla/mux"
+	"github.com/Sirupsen/logrus"
 	"github.com/evgorchakov/hnwh/database"
 	"github.com/evgorchakov/hnwh/web"
+	"github.com/gorilla/mux"
 )
 
 var log = logrus.New()
@@ -20,5 +21,5 @@ func main() {
 	router.HandleFunc("/search", web.CommentSearchHandler)
 	router.PathPrefix("/static/").Handler(web.StaticHandler)
 	http.Handle("/", router)
-	log.Fatal(http.ListenAndServe("localhost:8000", router))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 }
