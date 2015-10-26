@@ -2,22 +2,31 @@ package web
 
 import (
 	"errors"
+	"html/template"
 	"net/http"
 	"strconv"
-	"text/template"
+	"time"
 
 	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/Sirupsen/logrus"
 	"github.com/evgorchakov/hnwh/database"
 	"github.com/evgorchakov/hnwh/models"
 )
 
+type processedComment struct {
+	Id   int
+	By   string
+	Time time.Time
+	Text template.HTML
+}
+
 type searchBarData struct {
 	Keywords string
 	Months   int
 }
+
 type commentSearchData struct {
 	SearchBarData searchBarData
-	Comments      []models.HNComment
+	Comments      []processedComment
 }
 
 const (
@@ -38,19 +47,10 @@ var (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	data := commentSearchData{
-		SearchBarData: searchBarData{
-			Keywords: keywordsPlaceholder,
-			Months:   monthsPlaceholder,
-		},
-		Comments: nil,
-	}
-
-	templates.ExecuteTemplate(w, "comments", data)
+	templates.ExecuteTemplate(w, "index", nil)
 }
 
 func CommentSearchHandler(w http.ResponseWriter, r *http.Request) {
-	templates = template.Must(template.ParseGlob("templates/*html"))
 	var (
 		comments []models.HNComment
 		err      error
@@ -89,12 +89,22 @@ func CommentSearchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	processedComments := make([]processedComment, len(comments))
+	for i, comment := range comments {
+		processedComments[i] = processedComment{
+			Id:   comment.Id,
+			By:   comment.By,
+			Time: comment.Time,
+			Text: template.HTML(comment.Text),
+		}
+	}
+
 	data := commentSearchData{
 		SearchBarData: searchBarData{
 			Keywords: keywords,
 			Months:   months,
 		},
-		Comments: comments,
+		Comments: processedComments,
 	}
 
 	templates.ExecuteTemplate(w, "comments", data)
