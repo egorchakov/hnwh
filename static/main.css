@@ -1,14 +1,29 @@
+html, body {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
 body {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 12pt;
   color: #d0d0d0;
   background-color: #151515;
+  position: relative;
 }
 
 .main{
+  margin: 30px auto;
+  width: 73%;
+  padding: 10px;
+}
+
+.main-index{
   margin: auto;
   width: 75%;
   padding: 10px;
+  position: relative;
+  top: 40%;
 }
 
 div.comment-container {
@@ -16,6 +31,7 @@ div.comment-container {
   padding: 15px;
   margin: 30px 0;
   border-radius: 2px;
+  overflow: auto
 }
 
 div.comment-header a {
@@ -45,22 +61,22 @@ div.comment-text a {
   border-radius: 3px;
 }
 
-#searchbar input[type="text"] {
+#searchbar input[type=text] {
   background-color: #404040;
 }
 
-#searchbar input[type="submit"] {
+#searchbar input[type=submit] {
   background-color: #388E3C;
   float: right;
 }
 
-#searchbar input[id="keywords"]{
-  width: 350px;
+#searchbar input[id=keywords]{
+  width: 360px;
 }
 
-#searchbar input[id="months"]{
+#searchbar input[id=months]{
   background-color: #404040;
-  width: 50px;
+  width: 10px;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -68,5 +84,3 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none; 
     margin: 0; 
 }
-
-
