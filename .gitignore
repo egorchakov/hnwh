@@ -23,7 +23,8 @@ _testmain.go
 *.test
 *.prof
 
-
 /* Local only  */
 gin-bin
 .ctrlp
+*.swp
+*.bak
