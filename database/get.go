@@ -1,18 +1,25 @@
 package database
 
 import (
+	"strings"
+
 	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/jmoiron/sqlx"
 	"github.com/evgorchakov/hnwh/models"
 )
 
 const (
-	stmtGetStories            = `SELECT * FROM hn_stories`
-	stmtGetLatestStories      = `SELECT * from hn_stories ORDER BY time DESC LIMIT $1`
-	stmtGetStoryById          = `SELECT * FROM hn_stories WHERE id = $1`
-	stmtGetComments           = `SELECT * FROM hn_comments`
-	stmtGetCommentById        = `SELECT * FROM hn_comments WHERE id = $1`
-	stmtGetCommentsByKeywords = `SELECT * FROM hn_comments WHERE parent IN (:parent_ids) AND text @@ to_tsquery(:keywords) ORDER BY time DESC`
+	stmtGetStories                 = `SELECT * FROM hn_stories`
+	stmtGetLatestStories           = `SELECT * from hn_stories ORDER BY time DESC LIMIT $1`
+	stmtGetStoryById               = `SELECT * FROM hn_stories WHERE id = $1`
+	stmtGetComments                = `SELECT * FROM hn_comments`
+	stmtGetCommentById             = `SELECT * FROM hn_comments WHERE id = $1`
+	stmtGetCommentsByKeywords      = `SELECT * FROM hn_comments WHERE parent IN (:parent_ids) AND text @@ to_tsquery(:keywords) ORDER BY time DESC`
+	stmtGetCommentsByKeywordsPlain = `SELECT * FROM hn_comments WHERE parent IN (:parent_ids) AND text @@ plainto_tsquery(:keywords) ORDER BY time DESC`
 )
+
+func isPlainTSQuery(query string) bool {
+	return !strings.ContainsAny(query, "'()&|!")
+}
 
 func GetLatestStories(count int) ([]models.HNStory, error) {
 	var stories []models.HNStory
@@ -76,13 +83,23 @@ func GetCommentsByKeywords(keywords string, parentIDs []int) ([]models.HNComment
 	var (
 		comments []models.HNComment
 		comment  models.HNComment
+		err      error
+		query    string
+		args     []interface{}
 	)
 	params := map[string]interface{}{
 		"keywords":   keywords,
 		"parent_ids": parentIDs,
 	}
 
-	query, args, err := sqlx.Named(stmtGetCommentsByKeywords, params)
+	log.Info("keywords: ", keywords)
+	log.Info("plain? :", isPlainTSQuery(keywords))
+	if isPlainTSQuery(keywords) {
+		query, args, err = sqlx.Named(stmtGetCommentsByKeywordsPlain, params)
+	} else {
+		query, args, err = sqlx.Named(stmtGetCommentsByKeywords, params)
+	}
+
 	if err != nil {
 		return nil, err
 	}
