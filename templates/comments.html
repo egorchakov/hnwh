@@ -6,10 +6,10 @@
   </head>
   <body>
     <div class="main">
-
+      <h1> Who's Hiring? </h1>
       {{ template "searchbar" .SearchBarData }}
-
-      <p>Found {{len .Comments}} comments</p>
+      
+      <div id="found">Found {{len .Comments}} comments</div>
 
       <div class="comments">
         {{ range $comment := .Comments }}

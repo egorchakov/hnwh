@@ -13,7 +13,7 @@ body {
 }
 
 .main{
-  margin: 30px auto;
+  margin: 10px auto;
   width: 73%;
   padding: 10px;
 }
@@ -23,7 +23,7 @@ body {
   width: 75%;
   padding: 10px;
   position: relative;
-  top: 40%;
+  top: 30%;
 }
 
 div.comment-container {
@@ -59,10 +59,7 @@ div.comment-text a {
   text-align: center;
   border: none;
   border-radius: 3px;
-}
-
-#searchbar input[type=text] {
-  background-color: #404040;
+  margin: 5px;
 }
 
 #searchbar input[type=submit] {
@@ -71,7 +68,14 @@ div.comment-text a {
 }
 
 #searchbar input[id=keywords]{
-  width: 360px;
+  background-color: #404040;
+  width: 400px;
+}
+
+@media screen and (max-width: 600px) {
+    #searchbar input[id=keywords]{
+      width: 200px;
+    }  
 }
 
 #searchbar input[id=months]{
@@ -79,6 +83,14 @@ div.comment-text a {
   width: 10px;
 }
 
+#searchbar input[type=number]{
+  background-color: #404040;
+  margin: 0 5px;
+}
+
+#found {
+    margin-top: 30px;
+}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
