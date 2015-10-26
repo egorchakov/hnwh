@@ -11,7 +11,7 @@ const (
 	stmtGetStoryById          = `SELECT * FROM hn_stories WHERE id = $1`
 	stmtGetComments           = `SELECT * FROM hn_comments`
 	stmtGetCommentById        = `SELECT * FROM hn_comments WHERE id = $1`
-	stmtGetCommentsByKeywords = `SELECT * FROM hn_comments WHERE parent IN (:parent_ids) AND text @@ to_tsquery(:keywords)`
+	stmtGetCommentsByKeywords = `SELECT * FROM hn_comments WHERE parent IN (:parent_ids) AND text @@ to_tsquery(:keywords) ORDER BY time DESC`
 )
 
 func GetLatestStories(count int) ([]models.HNStory, error) {
