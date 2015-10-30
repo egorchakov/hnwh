@@ -7,7 +7,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/Sirupsen/logrus"
 	hn "github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/caser/gophernews"
 
 	"github.com/evgorchakov/hnwh/database"
