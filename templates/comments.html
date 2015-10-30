@@ -3,13 +3,15 @@
 <html>
   <head>
   <link rel="stylesheet" href="/static/main.css">
+  <link rel="shortcut icon" type="image/png" href="/static/favicon.png">
+  <title>Who's Hiring?</title>
   </head>
   <body>
     <div class="main">
       <h2> Who's Hiring? </h2>
       {{ template "searchbar" .SearchBarData }}
       
-      <div id="found">Found {{len .Comments}} comments</div>
+      <div id="found">Comments found: {{len .Comments}}</div>
 
       <div class="comments">
         {{ range $comment := .Comments }}

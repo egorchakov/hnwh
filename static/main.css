@@ -8,13 +8,13 @@ body {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 10pt;
   color: #d0d0d0;
-  background-color: #151515;
+  background-color: #202020;
   position: relative;
 }
 
 .main{
   margin: 10px auto;
-  width: 66%;
+  max-width: 980px;
   padding: 10px;
 }
 
@@ -27,15 +27,16 @@ body {
 }
 
 div.comment-container {
-  background-color: #202020;
+  background-color: #282828;
   padding: 15px;
-  margin: 30px 0;
+  margin-bottom: 30px;
   border-radius: 2px;
   overflow: auto
 }
 
 div.comment-header a {
   text-decoration: none;
+  text-transform: lowercase;
   color: #909090;
 }
 div.comment-text a {
@@ -81,7 +82,7 @@ div.comment-text a {
 
 #searchbar input[id=months]{
   background-color: #404040;
-  width: 10px;
+  width: 20px;
 }
 
 #searchbar input[type=number]{
@@ -90,7 +91,7 @@ div.comment-text a {
 }
 
 #found {
-    margin-top: 30px;
+    margin: 20px 0;
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
