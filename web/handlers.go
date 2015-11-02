@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/evgorchakov/hnwh/Godeps/_workspace/src/github.com/Sirupsen/logrus"
@@ -46,6 +47,14 @@ var (
 	StaticHandler = http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
 )
 
+func processKeywords(keywords string) string {
+	if strings.Count(keywords, `"`)%2 == 0 {
+		return strings.Replace(keywords, `"`, `'`, -1)
+	}
+
+	return keywords
+}
+
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "index", nil)
 }
@@ -62,6 +71,8 @@ func CommentSearchHandler(w http.ResponseWriter, r *http.Request) {
 		log.Error(keywordFieldError)
 		return
 	}
+
+	processedKeywords := processKeywords(keywords)
 
 	months, err := strconv.Atoi(r.URL.Query().Get("months"))
 	if err != nil {
@@ -82,7 +93,7 @@ func CommentSearchHandler(w http.ResponseWriter, r *http.Request) {
 		storyIDs[i] = story.Id
 	}
 
-	comments, err = database.GetCommentsByKeywords(keywords, storyIDs)
+	comments, err = database.GetCommentsByKeywords(processedKeywords, storyIDs)
 	if err != nil {
 		http.Error(w, oopsError.Error(), http.StatusInternalServerError)
 		log.Error(err)
