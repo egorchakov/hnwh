@@ -30,11 +30,6 @@ type commentSearchData struct {
 	Comments      []processedComment
 }
 
-const (
-	keywordsPlaceholder = "(python | 'embedded systems') & london"
-	monthsPlaceholder   = 2
-)
-
 var (
 	log = logrus.New()
 
@@ -43,6 +38,10 @@ var (
 	monthFieldError   = errors.New("Month value is invalid.")
 	keywordFieldError = errors.New("Keywords value is invalid.")
 	oopsError         = errors.New("Something went wrong!")
+	queryError        = errors.New(
+		"Provided keyword query is invalid. Here are examples of valid queries:\n" +
+			"\n(python | golang) & London\n\n" +
+			"haskell & 'san francisco'")
 
 	StaticHandler = http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
 )
@@ -65,7 +64,14 @@ func CommentSearchHandler(w http.ResponseWriter, r *http.Request) {
 		err      error
 	)
 
-	keywords := r.URL.Query().Get("keywords")
+	query := r.URL.Query()
+
+	if len(query) == 0 {
+		IndexHandler(w, r)
+		return
+	}
+
+	keywords := query.Get("keywords")
 	if len(keywords) == 0 {
 		http.Error(w, keywordFieldError.Error(), http.StatusBadRequest)
 		log.Error(keywordFieldError)
@@ -95,7 +101,7 @@ func CommentSearchHandler(w http.ResponseWriter, r *http.Request) {
 
 	comments, err = database.GetCommentsByKeywords(processedKeywords, storyIDs)
 	if err != nil {
-		http.Error(w, oopsError.Error(), http.StatusInternalServerError)
+		http.Error(w, queryError.Error(), http.StatusInternalServerError)
 		log.Error(err)
 		return
 	}
