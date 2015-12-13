@@ -71,7 +71,7 @@ div.comment-text a {
 
 #searchbar input[id=keywords]{
   background-color: #404040;
-  width: 400px;
+  width: 550px;
 }
 
 @media screen and (max-width: 600px) {
@@ -91,7 +91,7 @@ div.comment-text a {
 }
 
 #found {
-    margin: 20px 0;
+    margin: 20px 10px;
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
